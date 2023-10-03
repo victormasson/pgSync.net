@@ -1,0 +1,22 @@
+[databases_connection]
+from = "postgres://postgres:password@127.0.0.1:5433/Histo-Source"
+to = "postgres://postgres:password@127.0.0.1:5433/Histo-UAT"
+
+# group Histo full
+[[groups]]
+name = "histo_group"
+
+[[groups.tables]]
+name = "fiche"
+where_condition = "where tenant_id is null"
+delete_condition_target = "where tenant_id is null"
+
+[[groups.tables]]
+name = "modification"
+where_condition = "where tenant_id is null"
+delete_condition_target = "where tenant_id is null"
+
+[[groups.tables]]
+name = "valorisation"
+where_condition = "where tenant_id is null"
+delete_condition_target = "where tenant_id is null"
