@@ -10,8 +10,8 @@ Console.WriteLine("Hello, World!");
 var toml = @"
 
 [databases_connection]
-from = ""postgres://postgres:password@127.0.0.1:5433/Histo-Source""
-to = ""postgres://postgres:password@127.0.0.1:5433/Histo-UAT""
+from = ""Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase""
+to = ""Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase""
 
 # group Histo full
 [[groups]]
@@ -46,7 +46,7 @@ model.Groups.ForEach(g =>
 Parser.Default.ParseArguments<PgSync.Model.Options>(args)
     .WithParsed<PgSync.Model.Options>(o =>
     {
-        var a = new Client(o);
+        var a = new Client(o, model);
 
         a.Start();
     });
